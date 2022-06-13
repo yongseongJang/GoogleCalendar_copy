@@ -33,6 +33,7 @@
   "homepage": "https://github.com/yongseongJang/GoogleCalendar_copy#readme",
   "dependencies": {
     "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.9.3",
     "axios": "^0.27.2",
     "dayjs": "^1.11.3",
     "dotenv": "^16.0.1",
