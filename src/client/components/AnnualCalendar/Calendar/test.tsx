@@ -14,12 +14,10 @@ describe("<Calendar />", () => {
   it("renders Calendar component correctly", () => {
     const { result } = renderCalendar();
 
-    expect(result.getByText("일")).toBeInTheDocument();
-    expect(result.getByText("월")).toBeInTheDocument();
-    expect(result.getByText("화")).toBeInTheDocument();
-    expect(result.getByText("수")).toBeInTheDocument();
-    expect(result.getByText("목")).toBeInTheDocument();
-    expect(result.getByText("금")).toBeInTheDocument();
-    expect(result.getByText("토")).toBeInTheDocument();
+    const day = ["일", "월", "화", "수", "목", "금", "토"];
+
+    day.forEach((d) => {
+      expect(result.getByText(d)).toBeInTheDocument();
+    });
   });
 });
