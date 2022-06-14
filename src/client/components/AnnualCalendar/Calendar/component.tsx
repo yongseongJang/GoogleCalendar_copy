@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import * as React from "react";
-import dayjs from "dayjs";
+import useDateCalculation from "./useDateCalculation";
 import { css, jsx } from "@emotion/react";
 
 interface CalendarProps {
@@ -11,28 +11,7 @@ interface CalendarProps {
 function Calendar(props: CalendarProps) {
   const { year, month } = props;
 
-  const days = ["일", "월", "화", "수", "목", "금", "토"];
-
-  const lastDateOfMonth = dayjs(year + "-" + month).daysInMonth();
-  const lastDateOfBeforeMonth = dayjs(`${year}-${month}-1`)
-    .subtract(1, "day")
-    .date();
-  const firstDayOfMonth = dayjs(`${year}-${month}-1`).day();
-  const lastDayOfMonth = dayjs(`${year}-${month}-${lastDateOfMonth}`).day();
-
-  const dates = Array(firstDayOfMonth)
-    .fill(null)
-    .map((v, i) => i + 1 + (lastDateOfBeforeMonth - firstDayOfMonth))
-    .concat(
-      Array(lastDateOfMonth)
-        .fill(null)
-        .map((v, i) => i + 1),
-    )
-    .concat(
-      Array(6 - lastDayOfMonth)
-        .fill(null)
-        .map((v, i) => i + 1),
-    );
+  const { days, dates } = useDateCalculation(year, month);
 
   return (
     <div css={calendar}>
