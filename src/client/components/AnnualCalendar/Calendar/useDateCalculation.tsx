@@ -27,9 +27,24 @@ const useDateCalculation = (year: number, month: number) => {
       );
   }, [year, month]);
 
+  const includesToday = useMemo(() => {
+    const day = dayjs();
+    if (day.year() === year && day.month() + 1 === month) {
+      return true;
+    }
+
+    return false;
+  }, [year, month]);
+
+  const dateOfToday = useMemo(() => {
+    return dayjs().date();
+  }, [year, month]);
+
   return {
     days,
     dates,
+    includesToday,
+    dateOfToday,
   };
 };
 

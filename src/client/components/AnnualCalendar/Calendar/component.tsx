@@ -11,7 +11,10 @@ interface CalendarProps {
 function Calendar(props: CalendarProps) {
   const { year, month } = props;
 
-  const { days, dates } = useDateCalculation(year, month);
+  const { days, dates, includesToday, dateOfToday } = useDateCalculation(
+    year,
+    month,
+  );
 
   return (
     <div css={calendar}>
@@ -37,7 +40,13 @@ function Calendar(props: CalendarProps) {
                       .slice(index * 7, index * 7 + 7)
                       .map((date, index) => (
                         <span key={index} css={tableCell}>
-                          {date}
+                          <div
+                            css={dateStyle(
+                              includesToday && dateOfToday === date,
+                            )}
+                          >
+                            {date}
+                          </div>
                         </span>
                       ))}
                   </div>
@@ -88,6 +97,7 @@ const monthly = css`
 const table = css`
   display: table;
   width: 100%;
+  text-align: center;
 `;
 
 const tableRowGroup = css`
@@ -99,12 +109,26 @@ const tableRow = css`
   height: 28px;
 `;
 
-const tableCell = css`
+const tableCell = () => css`
   font-size: 12px;
   font-weight: 400;
   display: table-cell;
   vertical-align: middle;
   color: #70757a;
+`;
+
+const dateStyle = (isToday: boolean) => css`
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  margin: auto;
+  font-weight: 500;
+  border-radius: 50%;
+  ${isToday &&
+  `
+    background-color: #1a73e8;
+    color: #fff;
+  `}
 `;
 
 export default Calendar;
