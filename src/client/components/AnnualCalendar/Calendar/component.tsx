@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import * as React from "react";
 import useDateCalculation from "./useDateCalculation";
-import { css, jsx } from "@emotion/react";
+import { css } from "@emotion/react";
 
 interface CalendarProps {
   year: number;

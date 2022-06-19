@@ -4,11 +4,15 @@ import dayjs from "dayjs";
 import { Calendar } from "../AnnualCalendar/Calendar";
 import { css } from "@emotion/react";
 
-function AnnualCalendar() {
+interface AnnualCalendarProps {
+  year: number;
+}
+
+function AnnualCalendar(props: AnnualCalendarProps) {
   const month = Array(12)
     .fill(null)
     .map((v, i) => i + 1);
-  const year = dayjs().year();
+  const year = props.year;
 
   return (
     <div css={annualCalendar}>
