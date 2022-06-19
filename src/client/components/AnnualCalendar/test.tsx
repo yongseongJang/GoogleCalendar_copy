@@ -1,9 +1,10 @@
 import * as React from "react";
 import { render } from "../../utils/test-utils";
 import { AnnualCalendar } from "../AnnualCalendar";
+import dayjs from "dayjs";
 
 const renderAnnualCalendar = () => {
-  const result = render(<AnnualCalendar />);
+  const result = render(<AnnualCalendar year={dayjs().year()} />);
 
   return {
     result,

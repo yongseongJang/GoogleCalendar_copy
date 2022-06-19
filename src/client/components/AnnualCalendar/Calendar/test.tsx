@@ -4,8 +4,8 @@ import { Calendar } from "../../AnnualCalendar/Calendar";
 import dayjs from "dayjs";
 
 const renderCalendar = () => {
-  const day = dayjs("2022-06-17");
-  const result = render(<Calendar year={2022} month={6} />);
+  const day = dayjs();
+  const result = render(<Calendar year={day.year()} month={day.month() + 1} />);
 
   const dateOfToday = () => result.getByText(day.date());
 
