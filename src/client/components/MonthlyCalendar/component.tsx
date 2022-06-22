@@ -82,17 +82,26 @@ const daysStyle = css`
     border-right: #dadce0 1px solid;
     flex: 1 1 0%;
     text-align: center;
+
+    > span {
+      color: #70757a;
+      font-size: 11px;
+      font-weight: 500;
+      line-height: 20px;
+    }
   }
 `;
 
 const cell = css`
   display: flex;
   flex-direction: column;
+  flex: 1 1 0%;
 
   > div {
     display: flex;
     position: relative;
     border-bottom: #dadce0 1px solid;
+    flex: 1 1 0%;
 
     > div {
       display: flex;
