@@ -6,9 +6,13 @@ const useDateSetting = () => {
 
   const [year, setYear] = useState<number>(day.year());
 
+  const [month, setMonth] = useState<number>(day.month() + 1);
+
   return {
     year,
     setYear,
+    month,
+    setMonth,
   };
 };
 

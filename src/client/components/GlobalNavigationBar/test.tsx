@@ -9,7 +9,12 @@ const day = dayjs();
 
 jest
   .spyOn(app, "useDateSetting")
-  .mockImplementation(() => ({ year: day.year(), setYear: jest.fn() }));
+  .mockImplementation(() => ({
+    year: day.year(),
+    setYear: jest.fn(),
+    month: day.month(),
+    setMonth: jest.fn(),
+  }));
 
 const renderGlobalNavigationBar = () => {
   const { year, setYear } = app.useDateSetting();
