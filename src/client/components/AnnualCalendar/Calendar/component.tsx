@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import * as React from "react";
 import { useDateCalculation } from "../../../hooks";
+import { Cell } from "./Cell";
 import { css } from "@emotion/react";
 
 interface CalendarProps {
@@ -39,15 +40,12 @@ function Calendar(props: CalendarProps) {
                     {dates
                       .slice(index * 7, index * 7 + 7)
                       .map((date, index) => (
-                        <span key={index} css={tableCell}>
-                          <div
-                            css={dateStyle(
-                              includesToday && dateOfToday === date,
-                            )}
-                          >
-                            {date}
-                          </div>
-                        </span>
+                        <Cell
+                          key={date}
+                          date={date}
+                          includesToday={includesToday}
+                          dateOfToday={dateOfToday}
+                        />
                       ))}
                   </div>
                 );
@@ -115,20 +113,6 @@ const tableCell = () => css`
   display: table-cell;
   vertical-align: middle;
   color: #70757a;
-`;
-
-const dateStyle = (isToday: boolean) => css`
-  width: 24px;
-  height: 24px;
-  line-height: 24px;
-  margin: auto;
-  font-weight: 500;
-  border-radius: 50%;
-  ${isToday &&
-  `
-    background-color: #1a73e8;
-    color: #fff;
-  `}
 `;
 
 export default Calendar;

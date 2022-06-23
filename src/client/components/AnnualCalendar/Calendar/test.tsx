@@ -1,6 +1,6 @@
 import * as React from "react";
 import { render } from "../../../utils/test-utils";
-import { Calendar } from "../../AnnualCalendar/Calendar";
+import { Calendar } from ".";
 import dayjs from "dayjs";
 
 const renderCalendar = () => {
