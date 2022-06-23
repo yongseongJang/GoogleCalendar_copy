@@ -1,9 +1,9 @@
 /** @jsxImportSource @emotion/react */
 import * as React from "react";
 import { Switch, Route } from "react-router-dom";
-import { AnnualCalendar } from "../AnnualCalendar";
-import { MonthlyCalendar } from "../MonthlyCalendar";
-import { GlobalNavigationBar } from "../GlobalNavigationBar";
+import { AnnualCalendar } from "../../feature/AnnualCalendar";
+import { MonthlyCalendar } from "../../feature/MonthlyCalendar";
+import { GlobalNavigationBar } from "../../feature/GlobalNavigationBar";
 import { useDateSetting } from ".";
 import { css } from "@emotion/react";
 

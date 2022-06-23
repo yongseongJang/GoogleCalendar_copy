@@ -2,19 +2,17 @@ import * as React from "react";
 import { useState } from "react";
 import { render, fireEvent } from "../../utils/test-utils";
 import { GlobalNavigationBar } from ".";
-import * as app from "../App";
+import * as app from "../../components/App";
 import dayjs from "dayjs";
 
 const day = dayjs();
 
-jest
-  .spyOn(app, "useDateSetting")
-  .mockImplementation(() => ({
-    year: day.year(),
-    setYear: jest.fn(),
-    month: day.month(),
-    setMonth: jest.fn(),
-  }));
+jest.spyOn(app, "useDateSetting").mockImplementation(() => ({
+  year: day.year(),
+  setYear: jest.fn(),
+  month: day.month(),
+  setMonth: jest.fn(),
+}));
 
 const renderGlobalNavigationBar = () => {
   const { year, setYear } = app.useDateSetting();
