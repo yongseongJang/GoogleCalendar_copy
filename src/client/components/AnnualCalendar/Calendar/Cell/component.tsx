@@ -41,6 +41,7 @@ const dateStyle = (isToday: boolean, isSelected: boolean) => css`
   margin: auto;
   font-weight: 500;
   border-radius: 50%;
+  background-color: transparent;
   &:hover {
     background-color: #f1f3f4;
   }
