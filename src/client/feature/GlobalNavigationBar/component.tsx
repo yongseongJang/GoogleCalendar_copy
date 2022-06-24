@@ -1,6 +1,8 @@
 /** @jsxImportSource @emotion/react */
 import * as React from "react";
 import { useGNBSetting } from ".";
+import { Button } from "../../components/Button";
+import { DropdownDialog } from "../../components/DropdownDialog";
 import { css } from "@emotion/react";
 
 interface GlobalNavigationBarProps {
@@ -17,6 +19,7 @@ function GlobalNavigationBar(props: GlobalNavigationBarProps) {
   return (
     <header>
       <div>
+        <Button text={"오늘"} isDropDown={false} />
         <div css={periodChangeBtn}>
           <span onClick={handleBeforeBtnClick}>{`<`}</span>
         </div>
@@ -26,6 +29,7 @@ function GlobalNavigationBar(props: GlobalNavigationBarProps) {
         <div css={date}>
           <span>{props.year}</span>
         </div>
+        <Button text={"연도"} isDropDown={true} />
       </div>
     </header>
   );
