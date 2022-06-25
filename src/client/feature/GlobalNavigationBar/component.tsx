@@ -2,19 +2,11 @@
 import * as React from "react";
 import { useGNBSetting } from ".";
 import { Button } from "../../components/Button";
-import { DropdownDialog } from "../../components/DropdownDialog";
 import { css } from "@emotion/react";
 
-interface GlobalNavigationBarProps {
-  year: number;
-  setYear: React.Dispatch<React.SetStateAction<number>>;
-}
-
-function GlobalNavigationBar(props: GlobalNavigationBarProps) {
-  const { handleBeforeBtnClick, handleNextBtnClick } = useGNBSetting(
-    props.year,
-    props.setYear,
-  );
+function GlobalNavigationBar() {
+  const { year, month, handleBeforeBtnClick, handleNextBtnClick } =
+    useGNBSetting();
 
   return (
     <header>
@@ -27,7 +19,7 @@ function GlobalNavigationBar(props: GlobalNavigationBarProps) {
           <span onClick={handleNextBtnClick}>{`>`}</span>
         </div>
         <div css={date}>
-          <span>{props.year}</span>
+          <span>{year}</span>
         </div>
         <Button text={"연도"} isDropDown={true} />
       </div>

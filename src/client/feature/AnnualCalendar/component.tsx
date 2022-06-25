@@ -1,23 +1,22 @@
 /** @jsxImportSource @emotion/react */
 import * as React from "react";
 import { Calendar } from "../AnnualCalendar/Calendar";
+import { useRecoilValue } from "recoil";
+import { calendarState } from "../../recoil/calendar";
 import { css } from "@emotion/react";
 
-interface AnnualCalendarProps {
-  year: number;
-}
-
-function AnnualCalendar(props: AnnualCalendarProps) {
+function AnnualCalendar() {
   const month = Array(12)
     .fill(null)
     .map((v, i) => i + 1);
-  const year = props.year;
+
+  const calendar = useRecoilValue(calendarState);
 
   return (
     <div css={annualCalendar}>
       <div css={flexWrap}>
         {month.map((m) => (
-          <Calendar key={m} year={year} month={m} />
+          <Calendar key={m} year={calendar.year} month={m} />
         ))}
       </div>
     </div>

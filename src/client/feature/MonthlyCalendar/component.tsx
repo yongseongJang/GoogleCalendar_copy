@@ -2,21 +2,19 @@
 import * as React from "react";
 import { useDateCalculation } from "../../hooks";
 import { Cell } from "./Cell";
+import { useRecoilValue } from "recoil";
+import { calendarState } from "../../recoil/calendar";
 import { css } from "@emotion/react";
 
-interface MonthlyCalendarProps {
-  year: number;
-  month: number;
-}
-
-function MonthlyCalendar(props: MonthlyCalendarProps) {
+function MonthlyCalendar() {
+  const calendar = useRecoilValue(calendarState);
   const { days, dates, includesToday, dateOfToday } = useDateCalculation(
-    props.year,
-    props.month,
+    calendar.year,
+    calendar.month,
   );
 
   return (
-    <div css={calendar}>
+    <div css={calendarStyle}>
       <div>
         <div>
           <div css={daysStyle}>
@@ -49,7 +47,7 @@ function MonthlyCalendar(props: MonthlyCalendarProps) {
   );
 }
 
-const calendar = css`
+const calendarStyle = css`
   position: relative;
   display: flex;
   width: 100%;

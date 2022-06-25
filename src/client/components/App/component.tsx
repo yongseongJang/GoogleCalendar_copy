@@ -4,20 +4,15 @@ import { Switch, Route } from "react-router-dom";
 import { AnnualCalendar } from "../../feature/AnnualCalendar";
 import { MonthlyCalendar } from "../../feature/MonthlyCalendar";
 import { GlobalNavigationBar } from "../../feature/GlobalNavigationBar";
-import { useDateSetting } from ".";
 import { css } from "@emotion/react";
 
 function App() {
-  const { year, setYear, month, setMonth } = useDateSetting();
   return (
     <div css={app}>
-      <GlobalNavigationBar year={year} setYear={setYear} />
+      <GlobalNavigationBar />
       <Switch>
-        <Route path="/year" render={() => <AnnualCalendar year={year} />} />
-        <Route
-          path="/month"
-          render={() => <MonthlyCalendar year={year} month={month} />}
-        />
+        <Route path="/year" component={AnnualCalendar} />
+        <Route path="/month" component={MonthlyCalendar} />
       </Switch>
     </div>
   );
