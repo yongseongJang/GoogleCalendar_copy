@@ -2,7 +2,7 @@
 import * as React from "react";
 import { Calendar } from "../AnnualCalendar/Calendar";
 import { useRecoilValue } from "recoil";
-import { calendarState } from "../../recoil/calendar";
+import { gnbState } from "../../recoil/gnb";
 import { css } from "@emotion/react";
 
 function AnnualCalendar() {
@@ -10,13 +10,13 @@ function AnnualCalendar() {
     .fill(null)
     .map((v, i) => i + 1);
 
-  const calendar = useRecoilValue(calendarState);
+  const gnb = useRecoilValue(gnbState);
 
   return (
     <div css={annualCalendar}>
       <div css={flexWrap}>
         {month.map((m) => (
-          <Calendar key={m} year={calendar.year} month={m} />
+          <Calendar key={m} year={gnb.year} month={m} />
         ))}
       </div>
     </div>

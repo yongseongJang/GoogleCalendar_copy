@@ -1,16 +1,24 @@
 /** @jsxImportSource @emotion/react */
 import * as React from "react";
 import { useCellClick } from ".";
+import dayjs from "dayjs";
 import { css } from "@emotion/react";
 
 interface CellProps {
+  year: number;
+  month: number;
   date: number;
   includesToday: boolean;
   dateOfToday: number;
 }
 
 function Cell(props: CellProps) {
-  const { isSelected, handleClick } = useCellClick();
+  const { isSelected, handleClick } = useCellClick(
+    props.year,
+    props.month,
+    props.date,
+  );
+
   return (
     <span onClick={handleClick} css={cell}>
       <div

@@ -16,12 +16,18 @@ jest
   }));
 
 const renderCell = () => {
+  const year = day.year();
+  const month = day.month();
+
   const { dates, includesToday, dateOfToday } = hooks.useDateCalculation(
-    day.year(),
-    day.month(),
+    year,
+    month,
   );
+
   const result = render(
     <Cell
+      year={year}
+      month={month}
       date={dates[0]}
       includesToday={includesToday}
       dateOfToday={dateOfToday}

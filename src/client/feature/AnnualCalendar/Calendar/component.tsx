@@ -42,6 +42,8 @@ function Calendar(props: CalendarProps) {
                       .map((date, index) => (
                         <Cell
                           key={date}
+                          year={year}
+                          month={month}
                           date={date}
                           includesToday={includesToday}
                           dateOfToday={dateOfToday}

@@ -5,11 +5,12 @@ import { css } from "@emotion/react";
 interface ButtonProps {
   text: string;
   isDropDown: boolean;
+  onClick: () => void;
 }
 
 function Button(props: ButtonProps) {
   return (
-    <div css={button}>
+    <div onClick={props.onClick} css={button}>
       <div>
         <span css={text(props.isDropDown)}>{props.text}</span>
         {props.isDropDown && <span css={dropdownIcon}>▼</span>}

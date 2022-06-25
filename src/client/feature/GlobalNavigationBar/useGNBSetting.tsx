@@ -1,21 +1,40 @@
 import * as React from "react";
+import { useCallback } from "react";
 import { useRecoilState } from "recoil";
-import { calendarState } from "../../recoil/calendar";
+import { gnbState } from "../../recoil/gnb";
+import dayjs from "dayjs";
 
-const useGNBSetting = () => {
-  const [calendar, setCalendar] = useRecoilState(calendarState);
+const useGNBSetting = (): {
+  year: number;
+  month: number;
+  handleBeforeBtnClick: () => void;
+  handleNextBtnClick: () => void;
+  handleTodayBtnClick: () => void;
+  handleDropDownClick: () => void;
+} => {
+  const [gnb, setGnb] = useRecoilState(gnbState);
+
+  const year = dayjs().year();
 
   const handleBeforeBtnClick = () =>
-    setCalendar(calendar.update("year", () => calendar.year - 1));
+    setGnb(gnb.update("year", () => gnb.year - 1));
 
   const handleNextBtnClick = () =>
-    setCalendar(calendar.update("year", () => calendar.year + 1));
+    setGnb(gnb.update("year", () => gnb.year + 1));
+
+  const handleTodayBtnClick = useCallback(() => {
+    setGnb(gnb.update("year", () => year));
+  }, [year]);
+
+  const handleDropdownClick = useCallback(() => {}, []);
 
   return {
-    year: calendar.year,
-    month: calendar.month,
+    year: gnb.year,
+    month: gnb.month,
     handleBeforeBtnClick,
     handleNextBtnClick,
+    handleTodayBtnClick,
+    handleDropdownClick,
   };
 };
 

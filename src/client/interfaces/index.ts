@@ -1,1 +1,1 @@
-export { default as ICalendar } from "./calendar.interface";
+export * from "./calendar.interface";

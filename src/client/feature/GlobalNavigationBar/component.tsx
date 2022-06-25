@@ -5,13 +5,22 @@ import { Button } from "../../components/Button";
 import { css } from "@emotion/react";
 
 function GlobalNavigationBar() {
-  const { year, month, handleBeforeBtnClick, handleNextBtnClick } =
-    useGNBSetting();
+  const {
+    year,
+    month,
+    handleBeforeBtnClick,
+    handleNextBtnClick,
+    handleTodayBtnClick,
+  } = useGNBSetting();
 
   return (
     <header>
       <div>
-        <Button text={"오늘"} isDropDown={false} />
+        <Button
+          text={"오늘"}
+          isDropDown={false}
+          onClick={handleTodayBtnClick}
+        />
         <div css={periodChangeBtn}>
           <span onClick={handleBeforeBtnClick}>{`<`}</span>
         </div>
@@ -21,7 +30,7 @@ function GlobalNavigationBar() {
         <div css={date}>
           <span>{year}</span>
         </div>
-        <Button text={"연도"} isDropDown={true} />
+        <Button text={"연도"} isDropDown={true} onClick={handleTodayBtnClick} />
       </div>
     </header>
   );

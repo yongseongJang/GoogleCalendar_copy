@@ -1,6 +1,13 @@
+import dayjs from "dayjs";
+
+enum CALENDAR {
+  DAY = "d",
+  WEEK = "w",
+  MONTH = "m",
+  YEAR = "y",
+}
 interface calendar {
-  year: number;
-  month: number;
+  selectedDate: dayjs.Dayjs | null;
 }
 
-export default calendar;
+export { CALENDAR, calendar as ICalendar };

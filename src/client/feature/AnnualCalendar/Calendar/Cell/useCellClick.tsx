@@ -1,14 +1,22 @@
-import { useState, useCallback } from "react";
+import { useCallback, useMemo } from "react";
+import { useRecoilState } from "recoil";
+import { calendarState } from "../../../../recoil/calendar";
+import dayjs from "dayjs";
 
-const useCellClick = () => {
-  const [isSelected, setIsSelected] = useState<boolean>(false);
+const useCellClick = (year: number, month: number, date: number) => {
+  const [calendar, setCalendar] = useRecoilState(calendarState);
+
+  const day = useMemo(
+    () => dayjs(year + "-" + month + "-" + date),
+    [year, month, date],
+  );
 
   const handleClick = useCallback(() => {
-    setIsSelected(!isSelected);
-  }, [isSelected]);
+    setCalendar(calendar.update("selectedDate", () => day));
+  }, [day]);
 
   return {
-    isSelected,
+    isSelected: calendar.selectedDate === day,
     handleClick,
   };
 };

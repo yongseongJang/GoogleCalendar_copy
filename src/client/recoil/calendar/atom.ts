@@ -7,8 +7,7 @@ import dayjs from "dayjs";
 const day = dayjs();
 
 const defaultValues: ICalendar = {
-  year: day.year(),
-  month: day.month(),
+  selectedDate: null,
 };
 
 const makeCalendarState: Record.Factory<ICalendar> = Record(defaultValues);

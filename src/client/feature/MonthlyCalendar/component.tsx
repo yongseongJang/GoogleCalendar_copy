@@ -3,14 +3,14 @@ import * as React from "react";
 import { useDateCalculation } from "../../hooks";
 import { Cell } from "./Cell";
 import { useRecoilValue } from "recoil";
-import { calendarState } from "../../recoil/calendar";
+import { gnbState } from "../../recoil/gnb";
 import { css } from "@emotion/react";
 
 function MonthlyCalendar() {
-  const calendar = useRecoilValue(calendarState);
+  const gnb = useRecoilValue(gnbState);
   const { days, dates, includesToday, dateOfToday } = useDateCalculation(
-    calendar.year,
-    calendar.month,
+    gnb.year,
+    gnb.month,
   );
 
   return (
