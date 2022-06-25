@@ -1,5 +1,5 @@
 # GoogleCalendar_copy
 
-## 사용 기술
+## Languages, Libraries and Frameworks
 - React, Recoil, Emotion
 - TypeScript, HTML, CSS
