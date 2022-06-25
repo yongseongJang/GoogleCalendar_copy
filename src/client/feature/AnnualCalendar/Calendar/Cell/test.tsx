@@ -45,7 +45,7 @@ describe("<Cell />", () => {
   it("if click the date, background color changes", () => {
     const { date, clickDate } = renderCell();
 
-    expect(date).toHaveStyle("background-color: #ffffff");
+    expect(date).toHaveStyle("background-color: transparent");
 
     clickDate();
 

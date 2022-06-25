@@ -1,22 +1,13 @@
 import * as React from "react";
-import { useState } from "react";
 import { render, fireEvent } from "../../utils/test-utils";
-import { GlobalNavigationBar } from ".";
-import * as app from "../../components/App";
+import * as GlobalNavigationBar from ".";
 import dayjs from "dayjs";
 
 const day = dayjs();
 
-jest.spyOn(app, "useDateSetting").mockImplementation(() => ({
-  year: day.year(),
-  setYear: jest.fn(),
-  month: day.month(),
-  setMonth: jest.fn(),
-}));
-
 const renderGlobalNavigationBar = () => {
-  const { year, setYear } = app.useDateSetting();
-  const result = render(<GlobalNavigationBar year={year} setYear={setYear} />);
+  const day = dayjs();
+  const result = render(<GlobalNavigationBar.GlobalNavigationBar />);
 
   const beforeBtn = result.getByText("<");
   const nextBtn = result.getByText(">");
@@ -35,25 +26,24 @@ const renderGlobalNavigationBar = () => {
     nextBtn,
     clickBeforeBtn,
     clickNextBtn,
-    year,
-    setYear,
+    year: day.year(),
   };
 };
 
 describe("<GlobalNavigationBar/>", () => {
   it("fi click before btn ,calls setYear with year - 1", () => {
-    const { clickBeforeBtn, year, setYear } = renderGlobalNavigationBar();
+    const { result, clickBeforeBtn, year } = renderGlobalNavigationBar();
 
     clickBeforeBtn();
 
-    expect(setYear).toHaveBeenCalledWith(year - 1);
+    expect(result.getByText(String(year - 1))).toBeInTheDocument();
   });
 
   it("fi click next btn ,calls setYear with year + 1", () => {
-    const { clickNextBtn, year, setYear } = renderGlobalNavigationBar();
+    const { result, clickNextBtn, year } = renderGlobalNavigationBar();
 
     clickNextBtn();
 
-    expect(setYear).toHaveBeenCalledWith(year + 1);
+    expect(result.getByText(String(year + 1))).toBeInTheDocument();
   });
 });

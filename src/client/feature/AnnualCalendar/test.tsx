@@ -4,7 +4,7 @@ import { AnnualCalendar } from "../AnnualCalendar";
 import dayjs from "dayjs";
 
 const renderAnnualCalendar = () => {
-  const result = render(<AnnualCalendar year={dayjs().year()} />);
+  const result = render(<AnnualCalendar />);
 
   return {
     result,
