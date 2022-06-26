@@ -1,19 +1,27 @@
 /** @jsxImportSource @emotion/react */
 import * as React from "react";
+import { Suspense, lazy } from "react";
 import { Switch, Route } from "react-router-dom";
-import { AnnualCalendar } from "../../feature/AnnualCalendar";
-import { MonthlyCalendar } from "../../feature/MonthlyCalendar";
 import { GlobalNavigationBar } from "../../feature/GlobalNavigationBar";
 import { css } from "@emotion/react";
+
+const AnnualCalendar = lazy(
+  () => import("../../feature/AnnualCalendar/component"),
+);
+const MonthlyCalendar = lazy(
+  () => import("../../feature/MonthlyCalendar/component"),
+);
 
 function App() {
   return (
     <div css={app}>
       <GlobalNavigationBar />
-      <Switch>
-        <Route path="/year" component={AnnualCalendar} />
-        <Route path="/month" component={MonthlyCalendar} />
-      </Switch>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Switch>
+          <Route path="/year" component={AnnualCalendar} />
+          <Route path="/month" component={MonthlyCalendar} />
+        </Switch>
+      </Suspense>
     </div>
   );
 }
