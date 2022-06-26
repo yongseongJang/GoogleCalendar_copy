@@ -4,12 +4,15 @@ import { Router } from "react-router-dom";
 import { history } from "./utils/history";
 import { RecoilRoot } from "recoil";
 import { App } from "./components/App";
+import { ErrorBoundary } from "./components/ErrorBoundary";
 
 ReactDOM.render(
-  <RecoilRoot>
-    <Router history={history}>
-      <App />
-    </Router>
-  </RecoilRoot>,
+  <ErrorBoundary>
+    <RecoilRoot>
+      <Router history={history}>
+        <App />
+      </Router>
+    </RecoilRoot>
+  </ErrorBoundary>,
   document.getElementById("root"),
 );
