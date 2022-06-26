@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import * as React from "react";
 import { useGNBSetting } from ".";
+import { useDialogSetting } from "../../hooks";
 import { Button } from "../../components/Button";
 import { DropdownDialog } from "../../components/DropdownDialog";
 import { DIALOG } from "../../enums";
@@ -13,11 +14,12 @@ function GlobalNavigationBar() {
     handleBeforeBtnClick,
     handleNextBtnClick,
     handleTodayBtnClick,
-    handleDialogBtnClick,
   } = useGNBSetting();
 
+  const { handleDialogBtnClick } = useDialogSetting();
+
   return (
-    <header>
+    <header css={gnbBar}>
       <div>
         <Button
           text={"오늘"}
@@ -44,6 +46,11 @@ function GlobalNavigationBar() {
     </header>
   );
 }
+
+const gnbBar = css`
+  margin-top: 10px;
+  border-bottom: 1px solid #dadce0;
+`;
 
 const periodChangeBtn = css`
   display: inline-block;

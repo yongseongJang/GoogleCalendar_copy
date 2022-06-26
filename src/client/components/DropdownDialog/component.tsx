@@ -39,7 +39,10 @@ const dialogStyle = (
   position: absolute;
   top: ${top}px;
   left: ${left}px;
-  z-index: 1;
+  z-index: 2000;
+  background: #fff;
+  border-radius: 2px;
+  box-shadow: 0px 8px 10px 1px rgb(0 0 0 / 14%);
   display: none;
 
   > div {
@@ -59,11 +62,18 @@ const dialogStyle = (
 
 const itemStyle = css`
   padding-left: 16px;
+  padding-right: 70px;
   color: #222;
   cursor: pointer;
   display: block;
   outline: none;
   position: relative;
+  font-size: 14px;
+  font-weight: 400;
+
+  &:hover {
+    background: #dadce0;
+  }
 
   > div {
     line-height: 36px;

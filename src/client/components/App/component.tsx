@@ -3,6 +3,7 @@ import * as React from "react";
 import { Suspense, lazy } from "react";
 import { Switch, Route } from "react-router-dom";
 import { GlobalNavigationBar } from "../../feature/GlobalNavigationBar";
+import { useDialogSetting } from "../../hooks";
 import { css } from "@emotion/react";
 
 const AnnualCalendar = lazy(
@@ -13,8 +14,10 @@ const MonthlyCalendar = lazy(
 );
 
 function App() {
+  const { closeDialog } = useDialogSetting();
+
   return (
-    <div css={app}>
+    <div css={app} onClick={closeDialog}>
       <GlobalNavigationBar />
       <Suspense fallback={<div>Loading...</div>}>
         <Switch>
