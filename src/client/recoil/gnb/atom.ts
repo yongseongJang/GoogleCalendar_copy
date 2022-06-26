@@ -1,7 +1,7 @@
 import { atom } from "recoil";
 import { Record } from "immutable";
 import type { RecordOf } from "immutable";
-import { CALENDAR } from "../../interfaces";
+import { CALENDAR } from "../../enums";
 import dayjs from "dayjs";
 
 interface IGnbState {

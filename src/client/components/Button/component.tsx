@@ -1,16 +1,29 @@
 /** @jsxImportSource @emotion/react */
 import * as React from "react";
+import { DIALOG } from "../../enums";
+import { useButtonSetting } from ".";
 import { css } from "@emotion/react";
 
 interface ButtonProps {
   text: string;
   isDropDown: boolean;
-  onClick: () => void;
+  dialogType?: DIALOG;
+  onClick?: () => void;
+  onDialogBtnClick?: (
+    ref: React.RefObject<HTMLDivElement>,
+    selectedBtn: DIALOG,
+  ) => void;
 }
 
 function Button(props: ButtonProps) {
+  const { btnRef, handleClick } = useButtonSetting(
+    props.dialogType,
+    props.onClick,
+    props.onDialogBtnClick,
+  );
+
   return (
-    <div onClick={props.onClick} css={button}>
+    <div onClick={handleClick} css={button} ref={btnRef}>
       <div>
         <span css={text(props.isDropDown)}>{props.text}</span>
         {props.isDropDown && <span css={dropdownIcon}>▼</span>}

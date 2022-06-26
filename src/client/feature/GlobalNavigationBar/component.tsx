@@ -2,6 +2,8 @@
 import * as React from "react";
 import { useGNBSetting } from ".";
 import { Button } from "../../components/Button";
+import { DropdownDialog } from "../../components/DropdownDialog";
+import { DIALOG } from "../../enums";
 import { css } from "@emotion/react";
 
 function GlobalNavigationBar() {
@@ -11,6 +13,7 @@ function GlobalNavigationBar() {
     handleBeforeBtnClick,
     handleNextBtnClick,
     handleTodayBtnClick,
+    handleDialogBtnClick,
   } = useGNBSetting();
 
   return (
@@ -30,7 +33,13 @@ function GlobalNavigationBar() {
         <div css={date}>
           <span>{year}</span>
         </div>
-        <Button text={"연도"} isDropDown={true} onClick={handleTodayBtnClick} />
+        <Button
+          text={"연도"}
+          isDropDown={true}
+          dialogType={DIALOG.CALENDAR}
+          onDialogBtnClick={handleDialogBtnClick}
+        />
+        <DropdownDialog />
       </div>
     </header>
   );

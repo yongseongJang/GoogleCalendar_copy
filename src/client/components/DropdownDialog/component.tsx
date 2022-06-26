@@ -1,22 +1,26 @@
 /** @jsxImportSource @emotion/react */
 import * as React from "react";
+import { useDialogSetting } from "../../hooks";
 import { css } from "@emotion/react";
 
-interface DropDownProps {
-  items: string[];
-}
+function DropdownDialog() {
+  const { dialog, top, left, isVisible, items, handleClickItem } =
+    useDialogSetting();
 
-function DropdownDialog(props: DropDownProps) {
   return (
-    <div css={dialog}>
+    <div css={dialogStyle(isVisible, top, left)}>
       <div>
         <div>
-          {props.items.length &&
-            props.items.map((item, index) => {
+          {items.length &&
+            items.map((item, index) => {
               return (
-                <span key={item} css={itemStyle}>
+                <span
+                  key={item.title}
+                  css={itemStyle}
+                  onClick={() => handleClickItem(item.url)}
+                >
                   <div>
-                    <div>{item}</div>
+                    <div>{item.title}</div>
                   </div>
                 </span>
               );
@@ -27,8 +31,16 @@ function DropdownDialog(props: DropDownProps) {
   );
 }
 
-const dialog = css`
+const dialogStyle = (
+  isVisible: boolean,
+  top: number | null,
+  left: number | null,
+) => css`
   position: absolute;
+  top: ${top}px;
+  left: ${left}px;
+  z-index: 1;
+  display: none;
 
   > div {
     overflow-x: hidden;
@@ -38,6 +50,11 @@ const dialog = css`
       padding: 8px 0;
     }
   }
+
+  ${isVisible &&
+  `
+      display: block; 
+    `}
 `;
 
 const itemStyle = css`
