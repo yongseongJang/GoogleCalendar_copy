@@ -12,9 +12,8 @@ const useButtonSetting = (
   const btnRef = useRef<HTMLDivElement>(null);
 
   const handleClick = (e: React.MouseEvent) => {
-    e.stopPropagation();
-
     if (dialogType && onDialogBtnClick) {
+      e.stopPropagation();
       onDialogBtnClick(btnRef, dialogType);
     } else if (onClick) {
       onClick();

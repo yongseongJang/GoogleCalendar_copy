@@ -4,8 +4,7 @@ import { useDialogSetting } from "../../hooks";
 import { css } from "@emotion/react";
 
 function DropdownDialog() {
-  const { dialog, top, left, isVisible, items, handleClickItem } =
-    useDialogSetting();
+  const { dialog, top, left, isVisible, items } = useDialogSetting();
 
   return (
     <div css={dialogStyle(isVisible, top, left)}>
@@ -17,7 +16,7 @@ function DropdownDialog() {
                 <span
                   key={item.title}
                   css={itemStyle}
-                  onClick={() => handleClickItem(item.url)}
+                  onClick={item.handleClickItem}
                 >
                   <div>
                     <div>{item.title}</div>

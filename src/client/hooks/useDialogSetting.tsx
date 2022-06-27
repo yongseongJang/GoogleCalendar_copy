@@ -5,7 +5,6 @@ import { DIALOG } from "../enums";
 import { withItems } from "../recoil/dialog";
 import { initialState } from "../recoil/dialog/atom";
 import { dialogState } from "../recoil/dialog";
-import { history } from "../utils/history";
 
 const useDialogSetting = () => {
   const [dialog, setDialog] = useRecoilState(dialogState);
@@ -15,12 +14,8 @@ const useDialogSetting = () => {
     top: number | null;
     left: number | null;
     isVisible: boolean;
-    items: { title: string; url: string }[];
+    items: { title: string; handleClickItem: () => void }[];
   } = useRecoilValue(withItems);
-
-  const handleClickItem = (url: string) => {
-    history.replace(url);
-  };
 
   const handleDialogBtnClick = useCallback(
     (ref: React.RefObject<HTMLDivElement>, dialogType: DIALOG) => {
@@ -49,7 +44,6 @@ const useDialogSetting = () => {
 
   return {
     ...dialogWithItems,
-    handleClickItem,
     handleDialogBtnClick,
     closeDialog,
   };
